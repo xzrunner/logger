@@ -21,10 +21,10 @@ extern "C"
 
 #else
 
-#define LOGD(...)		printf(LOG_TAG, __VA_ARGS__)
-#define LOGI(...)		printf(LOG_TAG, __VA_ARGS__)
-#define LOGE(...)		printf(LOG_TAG, __VA_ARGS__)
-#define LOGW(...)		printf(LOG_TAG, __VA_ARGS__)
+#define LOGD(fmt, ...)	printf("%s [%s] " fmt "\n", LOG_TAG, "debug", __VA_ARGS__)
+#define LOGI(fmt, ...)	printf("%s [%s] " fmt "\n", LOG_TAG, "info", __VA_ARGS__)
+#define LOGE(fmt, ...)	printf("%s [%s] " fmt "\n", LOG_TAG, "error", __VA_ARGS__)
+#define LOGW(fmt, ...)	printf("%s [%s] " fmt "\n", LOG_TAG, "warn", __VA_ARGS__)
 #define LOGV			vprintf
 
 #endif // __ANDROID__
