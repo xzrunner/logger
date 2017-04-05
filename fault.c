@@ -4,6 +4,16 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
+#ifdef _DEBUG
+
+static void panic() { int *p = 0; *p = 1; }
+
+#else
+
+static void panic() { exit(1); }
+
+#endif
+
 void
 fault(const char* format, ...) 
 {
@@ -17,6 +27,6 @@ fault(const char* format, ...)
 		va_start(ap, format);
 		LOGV(format, ap);
 		va_end(ap);
-		exit(1);
+		panic();
 	}
 }
