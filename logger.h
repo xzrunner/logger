@@ -10,6 +10,8 @@ extern "C"
 
 #include <stdio.h>
 
+#ifdef DEBUG
+
 #ifdef __ANDROID__
 
 #include <android/log.h>
@@ -28,6 +30,16 @@ extern "C"
 #define LOGV			vprintf
 
 #endif // __ANDROID__
+
+#else
+
+#define LOGD(fmt, ...)
+#define LOGI(fmt, ...)
+#define LOGE(fmt, ...)
+#define LOGW(fmt, ...)
+#define LOGV
+
+#endif // DEBUG
 
 struct logger {
 	FILE* f;
