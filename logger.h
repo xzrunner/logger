@@ -10,7 +10,7 @@ extern "C"
 
 #include <stdio.h>
 
-#ifdef DEBUG
+#ifndef NDEBUG
 
 #ifdef __ANDROID__
 
