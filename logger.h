@@ -34,10 +34,22 @@ extern "C"
 #else
 
 #define LOGD(fmt, ...)
-#define LOGI(fmt, ...)
-#define LOGE(fmt, ...)
 #define LOGW(fmt, ...)
-#define LOGV
+
+#ifdef __ANDROID__
+
+#include <android/log.h>
+#define LOGI(...)		__android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
+#define LOGE(...)		__android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
+#define LOGV(fmt, ap)	__android_log_vprint(ANDROID_LOG_INFO, LOG_TAG, (fmt), (ap))
+
+#else
+
+#define LOGI(fmt, ...)	printf("%s [%s] " fmt "\n", LOG_TAG, "info", __VA_ARGS__)
+#define LOGE(fmt, ...)	printf("%s [%s] " fmt "\n", LOG_TAG, "error", __VA_ARGS__)
+#define LOGV			vprintf
+
+#endif // __ANDROID__
 
 #endif // DEBUG
 
