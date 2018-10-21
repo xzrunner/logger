@@ -5,12 +5,12 @@
 
 // static char LOG_FILENAME[255] = "_logger";
 
-void 
+void
 logger_init(struct logger* logger, FILE* f) {
 	logger->f = f;
 }
 
-void 
+void
 logger_printf(struct logger* logger, const char* fmt, ...) {
 	if (logger->f) {
 		va_list ap;

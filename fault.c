@@ -15,7 +15,7 @@ static void panic() { exit(1); }
 #endif
 
 void
-fault(const char* format, ...) 
+fault(const char* format, ...)
 {
 	if (format[0] == '!') {
 		va_list ap;
