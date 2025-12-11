@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.16)
 
 project(logger)
 
@@ -26,6 +26,4 @@ set(ALL_FILES
     ${Sources}
 )
 
-include_directories(${CMAKE_SOURCE_DIR})
-
-add_library(logger STATIC ${ALL_FILES})
+add_library(${PROJECT_NAME} STATIC ${ALL_FILES})
